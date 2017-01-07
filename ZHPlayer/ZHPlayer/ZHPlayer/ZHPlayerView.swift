@@ -51,15 +51,13 @@ class ZHPlayerView: UIView {
         
         setupUI()
         
-        setupConfig()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         setupUI()
-        
-        setupConfig()
+    
     }
     
     //filePrivate  lazy
@@ -121,6 +119,9 @@ class ZHPlayerView: UIView {
         //2.观察播放时间观察者移除
         player.removeTimeObserver(playerTimeObserve!)
         playerTimeObserve = nil
+        
+        //移除屏幕旋转的通知
+        NotificationCenter.default.removeObserver(self)
     }
     
     override func layoutSubviews() {
@@ -151,12 +152,6 @@ extension ZHPlayerView{
             self?.playerItem?.seek(to: time)
         }
 
-    }
-    
-    //初始化配置
-    fileprivate func setupConfig(){
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(orientationChanged(noti:)), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
     }
     
     //添加监听属性
@@ -242,12 +237,5 @@ extension ZHPlayerView{
     
 }
 
-//MARK:- 屏幕旋转
-extension ZHPlayerView{
-    
-    @objc fileprivate func orientationChanged(noti: NSNotification){
-        
-        
-    }
-}
+
 

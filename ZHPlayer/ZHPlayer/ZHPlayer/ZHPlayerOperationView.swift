@@ -137,23 +137,44 @@ class ZHPlayerOperationView: UIView {
                 superView.transform = CGAffineTransform(rotationAngle: (CGFloat)(M_PI_2))
                 
             })
+            
+            rotation.isSelected = true
         
         }else
         {
-            //全屏状态
-            screenType = .smallScreen
+           let orientation = UIDevice.current.orientation
             
-            UIApplication.shared.setStatusBarHidden(false, with: .fade)
-            
-            UIView.animate(withDuration: 0.3, animations: {
+            if orientation == .portrait
+            {
+                //全屏状态
+                screenType = .smallScreen
                 
-                superView.transform = CGAffineTransform.identity
-                superView.frame = superView.originalFrame
-            })
-        
+                UIApplication.shared.setStatusBarHidden(false, with: .fade)
+                
+                UIView.animate(withDuration: 0.3, animations: {
+                    
+                    superView.transform = CGAffineTransform.identity
+                    superView.frame = superView.originalFrame
+                })
+                
+            }else
+            {
+                UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
+                
+            }
+            
+            rotation.isSelected = false
+
         }
         
         UIApplication.shared.keyWindow?.addSubview(superView)
+    }
+    
+    deinit {
+        
+        removeTimer()
+        
+        NotificationCenter.default.removeObserver(self)
     }
     
     
@@ -173,6 +194,9 @@ extension ZHPlayerOperationView{
         //添加手势
         let tap = UITapGestureRecognizer(target: self, action: #selector(tap(tap:)))
         tapView.addGestureRecognizer(tap)
+        
+        //3.添加通知
+        NotificationCenter.default.addObserver(self, selector: #selector(orientationChanged(noti:)), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
     }
     
     
@@ -234,5 +258,77 @@ extension ZHPlayerOperationView{
         
         //操作完以后移除定时器
         removeTimer()
+    }
+}
+
+//MARK:- 屏幕旋转
+extension ZHPlayerOperationView{
+    
+    @objc fileprivate func orientationChanged(noti: NSNotification){
+        
+        //1.获取屏幕现在的方向
+        let orientation = UIDevice.current.orientation
+        
+        switch orientation {
+     
+        case .portrait:
+            
+            guard let superView = superView else {
+                
+                return
+            }
+            
+            if screenType == .fullScreen {
+                
+                screenType = .smallScreen
+                rotation.isSelected = false
+                
+                superView.transform = CGAffineTransform.identity
+                superView.frame = superView.originalFrame
+                
+            }
+        case .landscapeLeft:
+            
+            if screenType == .smallScreen
+            {
+                screenType = .fullScreen
+                rotation.isSelected = true
+            }
+            
+            fullScreenWithOrientation(orientation: orientation)
+            
+        case .landscapeRight:
+            
+            if screenType == .smallScreen
+            {
+                screenType = .fullScreen
+                rotation.isSelected = true
+            }
+            
+            fullScreenWithOrientation(orientation: orientation)
+            
+        default: break
+            
+            
+        }
+    }
+    
+    private func fullScreenWithOrientation(orientation: UIDeviceOrientation)
+    {
+        
+        guard let superView = superView else {
+            
+            return
+        }
+        
+        superView.removeFromSuperview()
+        superView.transform = CGAffineTransform.identity
+        
+        let height = UIScreen.main.bounds.height
+        let width = UIScreen.main.bounds.width
+        
+        superView.frame = CGRect(x: 0, y: 0, width: width, height: height)
+        
+        UIApplication.shared.keyWindow?.addSubview(superView)
     }
 }
