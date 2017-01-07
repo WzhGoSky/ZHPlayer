@@ -14,9 +14,8 @@
 		8435CCF61E1B881100484239 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8435CCF41E1B881100484239 /* LaunchScreen.storyboard */; };
 		8435CCFF1E1B88C300484239 /* ZHPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435CCFE1E1B88C300484239 /* ZHPlayerView.swift */; };
 		8435CD011E1B88DC00484239 /* ZHPlayerOperationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435CD001E1B88DC00484239 /* ZHPlayerOperationView.swift */; };
-		8435CD031E1B89C200484239 /* ZHPlayerOperationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8435CD021E1B89C200484239 /* ZHPlayerOperationView.xib */; };
-		8435CD051E1B8BF300484239 /* ZHOperationBottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435CD041E1B8BF300484239 /* ZHOperationBottomBar.swift */; };
-		8435CD071E1B8BFE00484239 /* ZHOperationBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8435CD061E1B8BFE00484239 /* ZHOperationBottomBar.xib */; };
+		844BFA3E1E1E757A0058E82E /* ZHPlayerOperationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844BFA3D1E1E757A0058E82E /* ZHPlayerOperationView.xib */; };
+		844BFA401E1E940B0058E82E /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844BFA3F1E1E940B0058E82E /* String+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,9 +28,8 @@
 		8435CCF71E1B881100484239 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8435CCFE1E1B88C300484239 /* ZHPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHPlayerView.swift; sourceTree = "<group>"; };
 		8435CD001E1B88DC00484239 /* ZHPlayerOperationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHPlayerOperationView.swift; sourceTree = "<group>"; };
-		8435CD021E1B89C200484239 /* ZHPlayerOperationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHPlayerOperationView.xib; sourceTree = "<group>"; };
-		8435CD041E1B8BF300484239 /* ZHOperationBottomBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHOperationBottomBar.swift; sourceTree = "<group>"; };
-		8435CD061E1B8BFE00484239 /* ZHOperationBottomBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHOperationBottomBar.xib; sourceTree = "<group>"; };
+		844BFA3D1E1E757A0058E82E /* ZHPlayerOperationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHPlayerOperationView.xib; sourceTree = "<group>"; };
+		844BFA3F1E1E940B0058E82E /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,9 +78,8 @@
 			children = (
 				8435CCFE1E1B88C300484239 /* ZHPlayerView.swift */,
 				8435CD001E1B88DC00484239 /* ZHPlayerOperationView.swift */,
-				8435CD021E1B89C200484239 /* ZHPlayerOperationView.xib */,
-				8435CD041E1B8BF300484239 /* ZHOperationBottomBar.swift */,
-				8435CD061E1B8BFE00484239 /* ZHOperationBottomBar.xib */,
+				844BFA3D1E1E757A0058E82E /* ZHPlayerOperationView.xib */,
+				844BFA3F1E1E940B0058E82E /* String+Extension.swift */,
 			);
 			path = ZHPlayer;
 			sourceTree = "<group>";
@@ -148,9 +145,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8435CCF61E1B881100484239 /* LaunchScreen.storyboard in Resources */,
-				8435CD031E1B89C200484239 /* ZHPlayerOperationView.xib in Resources */,
 				8435CCF31E1B881100484239 /* Assets.xcassets in Resources */,
-				8435CD071E1B8BFE00484239 /* ZHOperationBottomBar.xib in Resources */,
+				844BFA3E1E1E757A0058E82E /* ZHPlayerOperationView.xib in Resources */,
 				8435CCF11E1B881100484239 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -164,8 +160,8 @@
 			files = (
 				8435CCEE1E1B881100484239 /* ViewController.swift in Sources */,
 				8435CD011E1B88DC00484239 /* ZHPlayerOperationView.swift in Sources */,
-				8435CD051E1B8BF300484239 /* ZHOperationBottomBar.swift in Sources */,
 				8435CCFF1E1B88C300484239 /* ZHPlayerView.swift in Sources */,
+				844BFA401E1E940B0058E82E /* String+Extension.swift in Sources */,
 				8435CCEC1E1B881100484239 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,6 +285,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3BBQ69D5B7;
 				INFOPLIST_FILE = ZHPlayer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wangzhenhai.ZHPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -302,6 +299,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3BBQ69D5B7;
 				INFOPLIST_FILE = ZHPlayer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wangzhenhai.ZHPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -328,6 +326,7 @@
 				8435CCFC1E1B881100484239 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
