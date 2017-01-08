@@ -108,7 +108,6 @@ class ZHPlayerView: UIView {
     //记录下playerView的父视图
     var originalSuperView: UIView?
     
-    
     //销毁时移除
     deinit {
         
@@ -129,6 +128,19 @@ class ZHPlayerView: UIView {
         
         operationview.frame = self.bounds
         playerLayer.frame = self.layer.bounds
+    }
+    
+    override func didMoveToSuperview() {
+        
+        guard let superview = self.superview else {
+            
+            return
+        }
+        
+        if !superview.isKind(of: UIWindow.self){
+            
+            originalSuperView = superview
+        }
     }
 }
 

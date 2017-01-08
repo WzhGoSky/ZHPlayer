@@ -129,45 +129,39 @@ class ZHPlayerOperationView: UIView {
             //全屏状态
             screenType = .fullScreen
             
-            UIApplication.shared.setStatusBarHidden(true, with: .fade)
-            
             UIView.animate(withDuration: 0.3, animations: {
                 
                 superView.frame = frame
                 superView.transform = CGAffineTransform(rotationAngle: (CGFloat)(M_PI_2))
-                
+            
             })
             
             rotation.isSelected = true
         
+            UIApplication.shared.keyWindow?.addSubview(superView)
         }else
         {
+        
            let orientation = UIDevice.current.orientation
             
             if orientation == .portrait
             {
                 //全屏状态
-                screenType = .smallScreen
-                
-                UIApplication.shared.setStatusBarHidden(false, with: .fade)
-                
                 UIView.animate(withDuration: 0.3, animations: {
                     
                     superView.transform = CGAffineTransform.identity
                     superView.frame = superView.originalFrame
                 })
                 
-            }else
-            {
-                UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
+                screenType = .smallScreen
                 
+                superView.originalSuperView?.addSubview(superView)
             }
-            
-            rotation.isSelected = false
 
+            rotation.isSelected = false
         }
         
-        UIApplication.shared.keyWindow?.addSubview(superView)
+       
     }
     
     deinit {
@@ -176,8 +170,6 @@ class ZHPlayerOperationView: UIView {
         
         NotificationCenter.default.removeObserver(self)
     }
-    
-    
 }
 
 //MARK:- operationBar的操作
@@ -277,7 +269,7 @@ extension ZHPlayerOperationView{
                 
                 return
             }
-            
+        
             if screenType == .fullScreen {
                 
                 screenType = .smallScreen
@@ -287,6 +279,7 @@ extension ZHPlayerOperationView{
                 superView.frame = superView.originalFrame
                 
             }
+            
         case .landscapeLeft:
             
             if screenType == .smallScreen
@@ -306,7 +299,7 @@ extension ZHPlayerOperationView{
             }
             
             fullScreenWithOrientation(orientation: orientation)
-            
+        
         default: break
             
             
